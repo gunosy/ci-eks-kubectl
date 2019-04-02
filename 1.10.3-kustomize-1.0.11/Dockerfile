@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ENV K8SVERSION=1.10.3
-ENV RELEASEVER=2018-07-26
+ENV RELEASEVER=2019-03-27
 ENV KUSTOMIZEVER=1.0.11
 
 RUN apk --update --no-cache add ca-certificates \
