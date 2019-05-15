@@ -1,11 +1,12 @@
 FROM alpine:latest
 
 ENV K8SVERSION=1.11.5
-ENV RELEASEVER=2018-07-26
+ENV RELEASEVER=2018-12-06
 ENV KUSTOMIZEVER=1.0.11
 
-RUN apk --update --no-cache add ca-certificates \
- && apk --no-cache add --virtual build-dependencies curl openssl
+RUN apk --update --no-cache add ca-certificates python3 \
+ && apk --no-cache add --virtual build-dependencies curl openssl \
+ && pip3 install --upgrade pip awscli
 
 RUN curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl \
  && curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl.sha256 \
