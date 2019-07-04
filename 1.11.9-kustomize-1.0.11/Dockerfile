@@ -4,9 +4,10 @@ ENV K8SVERSION=1.11.9
 ENV RELEASEVER=2019-03-27
 ENV KUSTOMIZEVER=1.0.11
 
-RUN apk --update --no-cache add ca-certificates python3 \
- && apk --no-cache add --virtual build-dependencies curl openssl \
- && pip3 install --upgrade pip awscli
+RUN apk --update --no-cache add ca-certificates python3 libintl \
+ && apk --no-cache add --virtual build-dependencies curl openssl gettext \
+ && pip3 install --upgrade pip awscli \
+ && mv /usr/bin/envsubst /usr/local/bin/envsubst
 
 RUN curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl \
  && curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl.sha256 \
