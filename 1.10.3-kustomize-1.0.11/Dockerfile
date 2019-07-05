@@ -6,8 +6,7 @@ ENV KUSTOMIZEVER=1.0.11
 
 RUN apk --update --no-cache add ca-certificates python3 libintl \
  && apk --no-cache add --virtual build-dependencies curl openssl gettext \
- && pip3 install --upgrade pip awscli \
- && mv /usr/bin/envsubst /usr/local/bin/envsubst
+ && pip3 install --upgrade pip awscli
 
 RUN curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl \
  && curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl.sha256 \
