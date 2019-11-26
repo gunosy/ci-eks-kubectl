@@ -15,13 +15,6 @@ RUN : build dependencies \
  && chmod +x ./kubectl \
  && mv ./kubectl /usr/local/bin/kubectl \
  && rm -rf kubectl.sha256 \
- && : install aws-iam-authenticator \
- && curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/aws-iam-authenticator \
- && curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/aws-iam-authenticator.sha256 \
- && openssl sha1 -sha256 aws-iam-authenticator \
- && chmod +x ./aws-iam-authenticator \
- && mv ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator \
- && rm -rf aws-iam-authenticator.sha256 \
  && : install kustomize \
  && curl -O -L https://github.com/kubernetes-sigs/kustomize/releases/download/v$KUSTOMIZEVER/kustomize_${KUSTOMIZEVER}_linux_amd64 \
  && curl -O -L https://github.com/kubernetes-sigs/kustomize/releases/download/v$KUSTOMIZEVER/checksums.txt \
