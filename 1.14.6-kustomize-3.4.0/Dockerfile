@@ -16,11 +16,13 @@ RUN : build dependencies \
  && mv ./kubectl /usr/local/bin/kubectl \
  && rm -rf kubectl.sha256 \
  && : install kustomize \
- && curl -O -L https://github.com/kubernetes-sigs/kustomize/releases/download/v$KUSTOMIZEVER/kustomize_${KUSTOMIZEVER}_linux_amd64 \
- && curl -O -L https://github.com/kubernetes-sigs/kustomize/releases/download/v$KUSTOMIZEVER/checksums.txt \
- && openssl sha1 -sha256 kustomize_${KUSTOMIZEVER}_linux_amd64 \
- && chmod +x ./kustomize_${KUSTOMIZEVER}_linux_amd64 \
- && mv ./kustomize_${KUSTOMIZEVER}_linux_amd64 /usr/local/bin/kustomize \
+ && curl -O -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$KUSTOMIZEVER/kustomize_v${KUSTOMIZEVER}_linux_amd64.tar.gz \
+ && curl -O -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$KUSTOMIZEVER/checksums.txt \
+ && openssl sha1 -sha256 kustomize_v${KUSTOMIZEVER}_linux_amd64.tar.gz \
+ && tar xzf kustomize_v${KUSTOMIZEVER}_linux_amd64.tar.gz \
+ && chmod +x ./kustomize \
+ && mv ./kustomize /usr/local/bin/kustomize \
+ && rm -rf kustomize_v${KUSTOMIZEVER}_linux_amd64.tar.gz \
  && rm -rf checksums.txt \
  && : remove build dependencies \
  && apk del build-dependencies
