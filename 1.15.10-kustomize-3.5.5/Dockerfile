@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.12.0
 
 ENV K8SVERSION=1.15.10
 ENV RELEASEVER=2020-02-22
@@ -7,6 +7,8 @@ ENV KUSTOMIZEVER=3.5.5
 RUN : build dependencies \
  && apk --update --no-cache add ca-certificates python3 \
  && apk --no-cache add --virtual build-dependencies curl openssl \
+ && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+ && python3 get-pip.py \ 
  && pip3 install --upgrade pip awscli \
  && : kubectl for eks \
  && curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl \
