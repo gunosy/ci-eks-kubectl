@@ -5,7 +5,7 @@ ENV RELEASEVER=2018-07-26
 ENV KUSTOMIZEVER=1.0.11
 
 RUN apk --update --no-cache add ca-certificates py3-pip \
- && apk --no-cache add --virtual build-dependencies curl openssl \
+ && apk --no-cache add --virtual build-dependencies curl openssl git \
  && pip3 install --upgrade pip awscli
 
 RUN curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl \

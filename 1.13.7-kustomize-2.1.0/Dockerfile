@@ -6,7 +6,7 @@ ENV KUSTOMIZEVER=2.1.0
 
 RUN : build dependencies \
  && apk --update --no-cache add ca-certificates py3-pip \
- && apk --no-cache add --virtual build-dependencies curl openssl \
+ && apk --no-cache add --virtual build-dependencies curl openssl git \
  && pip3 install --upgrade pip awscli \
  && : kubectl for eks \
  && curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/$K8SVERSION/$RELEASEVER/bin/linux/amd64/kubectl \

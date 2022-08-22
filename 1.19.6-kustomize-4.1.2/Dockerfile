@@ -6,7 +6,7 @@ ENV KUSTOMIZEVER=4.1.2
 
 RUN : build dependencies \
  && apk --update --no-cache add ca-certificates python3 \
- && apk --no-cache add --virtual build-dependencies curl openssl \
+ && apk --no-cache add --virtual build-dependencies curl openssl git \
  && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
  && python3 get-pip.py \
  && pip3 install --upgrade pip awscli \
